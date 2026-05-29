@@ -17,6 +17,9 @@ birth_year = st.selectbox("Year", list(range(1950, today.year + 1)), key="birth_
 
 st.write("RAW SELECTION →", birth_month, birth_day, birth_year)
 
+# ✅ Always initialize age_display
+age_display = ""
+
 try:
     month_number = month_map[birth_month]
     birthdate = date(int(birth_year), month_number, int(birth_day))
@@ -24,9 +27,9 @@ try:
         (today.month, today.day) < (birthdate.month, birthdate.day)
     )
     st.write("DEBUG:", birthdate, "→ Age:", age)
+    age_display = str(age)
 except Exception as e:
     st.write("DEBUG ERROR:", e)
 
 # ✅ Auto-fill Age textbox (editable if needed)
 age_input = st.text_input("Age", value=age_display, key="age_input")
-
