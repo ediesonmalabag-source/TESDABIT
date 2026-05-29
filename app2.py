@@ -26,3 +26,7 @@ try:
     st.write("DEBUG:", birthdate, "→ Age:", age)
 except Exception as e:
     st.write("DEBUG ERROR:", e)
+
+# ✅ Auto-fill Age textbox (editable if needed)
+age_input = st.text_input("Age", value=age_display, key="age_input")
+
