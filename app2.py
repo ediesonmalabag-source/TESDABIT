@@ -32,4 +32,7 @@ except Exception as e:
     st.write("DEBUG ERROR:", e)
 
 # ✅ Auto-fill Age textbox (editable if needed)
-age_input = st.text_input("Age", value=age_display, key="age_input")
+if age_display:  # only update if we computed something
+    st.session_state.age_input = age_display
+
+age_input = st.text_input("Age", value=st.session_state.age_input, key="age_input")
